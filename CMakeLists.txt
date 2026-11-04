@@ -22,13 +22,13 @@ include(GNUInstallDirs)
 # Integer Queue Program
 if (BUILD_SHARED_LIBS)
     add_library(iqueue SHARED
-        include/Container.hpp
-        src/Container.cpp
+        include/IntQueue.hpp
+        src/IntQueue.cpp
     )
 else()
     add_library(iqueue STATIC
-        include/Container.hpp
-        src/Container.cpp
+        include/IntQueue.hpp
+        src/IntQueue.cpp
     )
 endif()
 
@@ -84,4 +84,10 @@ install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/iqueueConfig.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/iqueueConfigVersion.cmake"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/iqueue"
+)
+
+# License Installation
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/licenses/iqueue"
 )
