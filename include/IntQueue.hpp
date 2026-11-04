@@ -1,6 +1,20 @@
 #ifndef CONTAINER_HPP
 #define CONTAINER_HPP
 
+#ifdef IQUEUE_STATIC
+    #define IQUEUE_API
+#elif defined(_WIN32) || defined(__CYGWIN__) // Windows
+
+    #ifndef IQUEUE_EXPORTS
+        #define IQUEUE_API __declspec(dllimport)
+    #else
+        #define IQUEUE_API __declspec(dllexport)
+    #endif // IntQ_EXPORTS
+    
+#else // Non-windows
+    #define IQUEUE_API
+#endif // IQUEUE_STATIC
+
 class IntQueue {
 private :
     // Variables
@@ -67,7 +81,7 @@ public :
      * \brief removes the first Integeer from the Items
      * \returns true on success or false on failure; call getError() for more information.
      */
-    bool delQ() ;
+    bool removeQ() ;
     
     /**
      *  \brief Sets the maximum amount of Item size buffer, init() should be called for re-allocationg and resetting,

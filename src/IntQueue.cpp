@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <new>
 
-
 // Constructor
 IntQueue::IntQueue(int queueSize) {
     if (queueSize < limits.minQ) {
@@ -30,19 +29,21 @@ IntQueue::~IntQueue() {
 
 // Functions
 bool IntQueue::init() {
-    if (nItems) {
+    if (nItems) { // Ensuring no memory leak on second Initialization
         delete[] nItems ;
         nItems = nullptr ;
     }
+    
+    // Creating Items Container
     nItems = new (std::nothrow) int[nQueueSize] ;
-    if (!nItems) {
+    if (!nItems) { // Check if it's failed
         strncpy(sError, "Failed to Allocate enough space for Items size, probable insufficient memory space", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
         bInited = false ;
         return false ;
     }
     
-    
+    // Resetting Initial settings
     rear = front = 0 ;
     bInited = true ;
     return true ;
@@ -83,7 +84,7 @@ bool IntQueue::removeQ(int &item) {
     return true ;
 }
 
-bool IntQueue::delQ() {
+bool IntQueue::removeQ() {
     if (!bInited) {
         strncpy(sError, "Initialization either has been failed or not started, make sure you've called Queue::init() before using", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
