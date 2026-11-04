@@ -19,17 +19,24 @@ message(STATUS "Cmake C++ Extension: ${CMAKE_CXX_EXTENSIONS}")
 
 include(GNUInstallDirs)
 
-# Integer Queue Program
-if (BUILD_SHARED_LIBS)
-    add_library(iqueue SHARED
-        include/IntQueue.hpp
-        src/IntQueue.cpp
-    )
+
+if(BUILD_SHARED_LIBS)
+    set(_iqueue_type SHARED)
 else()
-    add_library(iqueue STATIC
-        include/IntQueue.hpp
-        src/IntQueue.cpp
-    )
+    set(_iqueue_type STATIC)
+endif()
+
+# IntQueue Library
+add_library(iqueue ${_iqueue_type}
+    "src/IntQueue.cpp"
+    "include/IntQueue.hpp"
+)
+
+# Adding Static || Shared Definition
+if(_iqueue_type STREQUAL "SHARED") # Shared Build
+    target_compile_definitions(iqueue PRIVATE IQUEUE_EXPORTS)
+else() # Static Build
+    target_compile_definitions(iqueue PUBLIC IQUEUE_STATIC)
 endif()
 
 # Property Setter
@@ -76,7 +83,7 @@ write_basic_config_version_file(
 
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/iqueueConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/iQueueConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/iqueueConfig.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/iqueue"
 )
 
