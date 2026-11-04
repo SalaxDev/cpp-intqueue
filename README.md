@@ -13,7 +13,7 @@
 
 Tested In: [![C++17 / C++20](https://img.shields.io/badge/C%2B%2B-17%20%2F%2020-blue.svg)](#)
 <br>
-License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
 
 [Quick start](#quick-start) · [API](#api) · [Build](#build) · [How to use](#how-to-use) · [Limitations](#limitations) · [Download](#download)
 
