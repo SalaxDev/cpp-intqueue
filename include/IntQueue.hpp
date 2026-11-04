@@ -61,7 +61,7 @@ public :
      *  \param item returns the removed Integer from the Items
      *  \returns true on success or false on failure; call getError() for more information.
      */
-    bool delQ(int &item) ;
+    bool removeQ(int &item) ;
     
     /**
      * \brief removes the first Integeer from the Items

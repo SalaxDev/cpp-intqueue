@@ -66,7 +66,7 @@ bool IntQueue::addQ(int item) {
     return true ;
 }
 
-bool IntQueue::delQ(int &item) {
+bool IntQueue::removeQ(int &item) {
     if (!bInited) {
         strncpy(sError, "Initialization either has been failed or not started, make sure you've called Queue::init() before using", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
