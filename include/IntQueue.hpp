@@ -1,7 +1,7 @@
 #ifndef CONTAINER_HPP
 #define CONTAINER_HPP
 
-class Queue {
+class IntQueue {
 private :
     // Variables
     int *nItems = nullptr ;
@@ -21,23 +21,23 @@ private :
     bool bInited = false ;
 public :
     // Constructor
-    Queue(int queueSize = 5) ;
+    IntQueue(int IntQueueSize = 5) ;
     // Destructor
-    ~Queue() ;
+    ~IntQueue() ;
     
     // Copy & Assign
     
     // Copy Semantic
     // Copy Constructor
-    Queue(const Queue &other) = delete ;
+    IntQueue(const IntQueue &other) = delete ;
     // Copy Operator
-    Queue &operator=(const Queue &other) = delete ;
+    IntQueue &operator=(const IntQueue &other) = delete ;
     
     // Move Semantic
     // Move Construtor
-    Queue(Queue &&other) = delete ;
+    IntQueue(IntQueue &&other) = delete ;
     // Move Operator
-    Queue &operator=(Queue &&other) = delete ;
+    IntQueue &operator=(IntQueue &&other) = delete ;
     
     
     // Functions
@@ -107,11 +107,11 @@ public :
     const char *getError() const ;
     
     /**
-     * \brief Get the Max Queue Size object
+     * \brief Get the Max IntQueue Size object
      */
     int getMaxQueueSize() const ;
     /**
-     * \brief Get the Min Queue Size object
+     * \brief Get the Min IntQueue Size object
      */
     int getMinQueueSize() const ;
 };

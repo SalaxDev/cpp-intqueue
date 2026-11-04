@@ -1,11 +1,11 @@
-#include "Container.hpp"
+#include "IntQueue.hpp"
 #include <cstring>
 #include <cstdio>
 #include <new>
 
 
 // Constructor
-Queue::Queue(int queueSize) {
+IntQueue::IntQueue(int queueSize) {
     if (queueSize < limits.minQ) {
         printf("Queue Constructor Ignored queue size because of a number lower than %d, default value size applies(%d).\n", limits.minQ, limits.defaultQ) ;
         nQueueSize = limits.defaultQ ;
@@ -21,7 +21,7 @@ Queue::Queue(int queueSize) {
 
 
 // Destructor
-Queue::~Queue() {
+IntQueue::~IntQueue() {
     if (nItems) {
         delete[] nItems ;
         nItems = nullptr ;
@@ -29,7 +29,7 @@ Queue::~Queue() {
 }
 
 // Functions
-bool Queue::init() {
+bool IntQueue::init() {
     if (nItems) {
         delete[] nItems ;
         nItems = nullptr ;
@@ -50,7 +50,7 @@ bool Queue::init() {
 
 
 // Setters
-bool Queue::addQ(int item) {
+bool IntQueue::addQ(int item) {
     if (!bInited) {
         strncpy(sError, "Initialization either has been failed or not started, make sure you've called Queue::init() before using", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
@@ -66,7 +66,7 @@ bool Queue::addQ(int item) {
     return true ;
 }
 
-bool Queue::delQ(int &item) {
+bool IntQueue::delQ(int &item) {
     if (!bInited) {
         strncpy(sError, "Initialization either has been failed or not started, make sure you've called Queue::init() before using", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
@@ -83,7 +83,7 @@ bool Queue::delQ(int &item) {
     return true ;
 }
 
-bool Queue::delQ() {
+bool IntQueue::delQ() {
     if (!bInited) {
         strncpy(sError, "Initialization either has been failed or not started, make sure you've called Queue::init() before using", nErrorSize - 1) ;
         sError[nErrorSize - 1] = '\0' ;
@@ -99,7 +99,7 @@ bool Queue::delQ() {
     return true ;
 }
 
-bool Queue::setQueueSize(int size) {
+bool IntQueue::setQueueSize(int size) {
     if (size < limits.minQ) {
         snprintf(sError, nErrorSize, "Queue size cannot be lower than %d", limits.minQ) ;
         return false ;
@@ -115,31 +115,31 @@ bool Queue::setQueueSize(int size) {
 
 
 // Getters
-bool Queue::isFull() const {
+bool IntQueue::isFull() const {
     int newFront = (front + 1) % nQueueSize ;
     if (newFront == rear) {
         return true ;
     } return false ;
 }
 
-bool Queue::isEmpty() const {
+bool IntQueue::isEmpty() const {
     if (rear == front) {
         return true ;
     } return false ;
 }
 
-void Queue::getError(const char *&info) const {
+void IntQueue::getError(const char *&info) const {
     info = sError ;
 }
 
-const char *Queue::getError() const {
+const char *IntQueue::getError() const {
     return sError ;
 }
 
-int Queue::getMaxQueueSize() const {
+int IntQueue::getMaxQueueSize() const {
     return limits.maxQ ;
 }
 
-int Queue::getMinQueueSize() const {
+int IntQueue::getMinQueueSize() const {
     return limits.minQ ;
 }
