@@ -15,11 +15,30 @@ Tested In: [![C++17 / C++20](https://img.shields.io/badge/C%2B%2B-17%20%2F%2020-
 <br>
 License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
 
-[Quick start](#quick-start) · [API](#api) · [Build](#build) · [How to use](#how-to-use) · [Limitations](#limitations) · [Download](#download)
+
+<div align="center">
+
+  
+  [<kbd>Features</kbd>](#features) · [<kbd>Prerequisites</kbd>](#prerequisites) · [<kbd>Quick start</kbd>](#quick-start) · [<kbd>API</kbd>](#api) ·
+  [<kbd>Build</kbd>](#build) · [<kbd>How to use</kbd>](#how-to-use) · [<kbd>Limitations</kbd>](#limitations) · [<kbd>Download</kbd>](#download)
+</div>
+
+<a id="features"></a>
+## ⚙️ Features
+- Clean, minimal codebase
+- Documented
+- RAII
+- Cross platform
+- Dependecy free
+
+<a id="prerequisites"></a>
+## 🛠️ Prerequisites
 
 <a id="quick-start"></a>
 ## 🚀 Quick Start
+```cpp
 
+```
 <a id="api"></a>
 ## 🧩 API
 
