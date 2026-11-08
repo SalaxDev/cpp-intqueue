@@ -50,7 +50,7 @@ target_include_directories(iqueue PUBLIC
 
 target_include_directories(iqueue PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/test.cpp" 
 )
 
 # Installation
@@ -98,3 +98,21 @@ install(FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/licenses/iqueue"
 )
+
+# Debugging exe
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+    
+    add_executable(test_exe src/test.cpp)
+    
+    set_target_properties(test_exe PROPERTIES OUTPUT_NAME "Test")
+    
+    target_link_libraries(test_exe PRIVATE iqueue)
+    
+    add_custom_command(TARGET test_exe POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:iqueue>
+        $<TARGET_FILE_DIR:test_exe>
+        COMMENT "Copying iqueue library to the test program directory"
+    )
+endif()
