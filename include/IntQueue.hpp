@@ -26,7 +26,7 @@ private :
     // Queue Size Structure
     struct Limits {
         int minQ = 2 ;
-        int maxQ = 100 ;
+        int maxQ = 1024 ;
         int defaultQ = 5 ;
     }; Limits limits ;
     
