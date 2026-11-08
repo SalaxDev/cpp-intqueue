@@ -192,7 +192,7 @@ target_link_libraries(your_program PRIVATE iqueue::iqueue)
 IntQueue container have **fixed size** capacity, which makes you call initialization after you change the capacity
 <a id="download"></a>
 ## 🌐 Download
-alternatively you can download the compiled library and use it :
-**There are currently no releases due to be in development**
+alternatively you can download the compiled library and use it : <br>
+<sup>Windows 7+ SP1 64 Bit:</sup> [![Latest Release](https://img.shields.io/github/v/release/salaxdev/cpp-intqueue?style=for-the-badge&color=blue)](https://github.com/salaxdev/cpp-intqueue/releases/latest) <br>
 > [!NOTE]
 > Pre-Compiled versions of library in the release are not **Code-Signed**, which the library might be Flagged by Anti Virus, if that happen, exclude the folder or file in the settings
