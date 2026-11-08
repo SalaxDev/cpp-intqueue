@@ -34,13 +34,81 @@ License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](
 <a id="prerequisites"></a>
 ## 🛠️ Prerequisites
 - Cmake 3.19+
-- A compiler(g++ | clang++ | msvc)
+- A compiler that supports C++17/C++20 (g++ | clang++ | msvc)
 
 <a id="quick-start"></a>
 ## 🚀 Quick Start
-```cpp
+<details>
+  <summary>Click to expand</summary>
 
-```
+  ```cpp
+#include "IntQueue.hpp"
+#include <iostream>
+
+void log(IntQueue &q) {
+    bool empty ; // Logging
+    std::cout << "Capacity: " << q.getQueueStoredSize() << std::endl ;
+    std::cout << "First Item: " << q.getFirstQueueItem(empty) << std::endl ;
+    if (empty) {
+        std::cout << "Container is empty" << std::endl ;
+    }
+    std::cout << "Last Item: " << q.getLastQueueItem(empty) << std::endl ;
+    if (empty) {
+        std::cout << "Container is empty" << std::endl ;
+    }
+}
+
+int main(int argc, const char** argv) {
+    IntQueue q(5) ;
+    std::cout << q.getQueueSize() << std::endl ;
+    // Initializing Container and checking for errors
+    if (!q.init()) {
+        std::cout << "Error: " << q.getError() << std::endl ;
+        return 1 ;
+    }
+    
+    std::cout << "Queue Minimum Size Limit: " << q.getMinQueueSize() << std::endl ;
+    std::cout << "Queue Maximum Size Limit: " << q.getMaxQueueSize() << std::endl ;
+    
+    for (int i = 10; !q.isFull(); i *= 2) {
+        // Adding Item to Container
+        if (!q.addQ(i)) {
+            std::cout << "Error: " << q.getError() << std::endl ;
+        }
+        
+        log(q) ;
+    }
+    
+    // Trying to add another item
+    if (!q.addQ(200)) {
+        std::cout << "Error: " << q.getError() << std::endl ;
+    }
+    
+    // Removing Stored Integers
+    while (!q.isEmpty()) {
+        int item ;
+        if (!q.removeQ(item)) {
+            std::cout << "Error: " << q.getError() << std::endl ;
+        }
+        std::cout << "Removed Item: " << item << std::endl ;
+    }
+    
+    // Trying to Remove another item
+    if (!q.removeQ()) {
+        std::cout << "Error: " << q.getError() << std::endl ;
+    }
+    
+    // Resizing the Container
+    if (!q.setQueueSize(100)) {
+        std::cout << "Error: 1" << q.getError() << std::endl ;
+    }
+    std::cout << q.getQueueSize() << std::endl ;
+    
+    return 0 ;
+}
+  ```
+</details>
+
 <a id="api"></a>
 ## 🧩 API
 <table>
