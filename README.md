@@ -4,11 +4,6 @@
 
 </div>
 
-> [!NOTE]
-> In Development ⚒️
-
----
-
 **C++ Integer Queue** - a small, dependency-free fixed-capacity FIFO queue of `int`, implemented as a ring buffer.
 
 Tested In: [![C++17 / C++20](https://img.shields.io/badge/C%2B%2B-17%20%2F%2020-blue.svg)](#)
